@@ -28,12 +28,20 @@ export async function run() {
     // change the paragraph color to blue.
     paragraph.font.color = "blue";
 
+    console.log('sync calling')
+
     await context.sync().then(function () {
-      var html = bodyHtml.value;
-      // eslint-disable-next-line no-undef
-      console.log(bodyHtml);
-      // eslint-disable-next-line no-undef
-      console.log(html);
-    });
+        console.log("sync called");
+
+        //var html = bodyHtml.value;
+        // eslint-disable-next-line no-undef
+        //console.log(bodyHtml);
+        // eslint-disable-next-line no-undef
+        //console.log(html);
+      })
+      .catch(function (e) {
+        console.log(e);
+        console.log(OfficeExtension.Error().debugInfo);
+      });
   });
 }
